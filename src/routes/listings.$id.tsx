@@ -55,7 +55,7 @@ function ListingDetail() {
         <div className="overflow-hidden rounded-2xl md:col-span-2 md:row-span-2">
           <img src={l.gallery[0]} alt={l.title} width={1200} height={900} className="h-full max-h-[520px] w-full object-cover" />
         </div>
-        {l.gallery.slice(1, 3).map((g, i) => (
+        {l.gallery.slice(1, 3).map((g: string, i: number) => (
           <div key={i} className="overflow-hidden rounded-2xl">
             <img src={g} alt="" loading="lazy" width={1200} height={900} className="h-full max-h-[252px] w-full object-cover" />
           </div>
@@ -95,7 +95,7 @@ function ListingDetail() {
           <div className="mt-8">
             <h2 className="font-display text-xl font-semibold">Amenities</h2>
             <ul className="mt-4 grid gap-3 sm:grid-cols-2">
-              {l.amenities.map((a) => (
+              {l.amenities.map((a: string) => (
                 <li key={a} className="flex items-center gap-2 text-sm">
                   <span className="grid h-6 w-6 place-items-center rounded-full bg-mist/40 text-teal">
                     <Check className="h-3.5 w-3.5" />
