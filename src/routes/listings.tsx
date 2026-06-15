@@ -1,15 +1,19 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
-import { zodValidator, fallback } from "@tanstack/zod-adapter";
-import { z } from "zod";
 import { useMemo } from "react";
 import { SearchBar } from "@/components/SearchBar";
 import { ListingCard } from "@/components/ListingCard";
 import { listings } from "@/data/listings";
 
-const searchSchema = z.object({
-  state: fallback(z.string().optional(), undefined),
-  university: fallback(z.string().optional(), undefined),
-  type: fallback(z.string().optional(), undefined),
+type ListingsSearch = {
+  state?: string;
+  university?: string;
+  type?: string;
+};
+
+const validateSearch = (input: Record<string, unknown>): ListingsSearch => ({
+  state: typeof input.state === "string" ? input.state : undefined,
+  university: typeof input.university === "string" ? input.university : undefined,
+  type: typeof input.type === "string" ? input.type : undefined,
 });
 
 export const Route = createFileRoute("/listings")({
