@@ -17,7 +17,7 @@ const validateSearch = (input: Record<string, unknown>): ListingsSearch => ({
 });
 
 export const Route = createFileRoute("/listings")({
-  validateSearch: zodValidator(searchSchema),
+  validateSearch,
   head: () => ({
     meta: [
       { title: "Browse student homes — UNIrent" },
